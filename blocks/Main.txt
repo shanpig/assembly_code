@@ -1,0 +1,30 @@
+class Main {
+    function void main() {
+		var SquareGame game;
+		var Cover cover;
+		var Boarder O;
+		var boolean retry;
+		var int stage, end;
+		let retry = true;
+		let end = 1;
+			let stage = 0;
+			do Screen.clearScreen();
+			let retry = false;
+			let cover = Cover.new(0);
+			let O = Boarder.new(2);
+			do cover.show();
+			do cover.dispose();
+			do O.dispose();
+			
+			while ((stage<3) & ((end=1)|((end=2) & retry))) {
+				if (~(retry)){let stage = stage + 1;}
+				let game = SquareGame.new(stage);
+				do Sys.wait(15);
+				do game.run();
+				let end = game.endResult();
+				let retry = game.retryGame();
+				do game.dispose();
+			}
+        return;
+    }
+}

@@ -1,0 +1,352 @@
+class Ball {
+	field int build;
+	static Block block;  // block group
+	static Boarder wall;  // the boarder
+	static Array blocks;  // block array (saving block message)
+
+	static boolean bounced;
+	static int xSquare, ySquare, length, size; // position and length of the square
+	static int blockNum, count, winning;  // numbers of blocks and counting
+	static int hitX, hitY, diagonal; // whether the ball has hit anything
+	static int slowness, maxTime;  // speed adjusted from cover
+	static int dirX, dirY;  // direction to the chased object
+	static int radius;  // radius of this ball, in pixels
+	static int Stage;  // the current stage of the game
+	static int x, y;  // screen location of the ball
+	static int Type;  // ball type ('cover' or 'game' type)
+	static int hit;  // determines what the ball hits
+	
+	constructor Ball new( int type, int stage){
+		var int i;
+		let i = 0;
+		let Type = type;
+		let Stage = stage;
+		let maxTime = 20;
+		let slowness = maxTime;
+		if (type = 1){  // the type for the game
+			let wall = Boarder.new(1);
+			let x=200; let y=195;
+			
+			do Screen.drawCircle(  60, 30, 10);
+			do Screen.drawCircle( 452, 30, 10);
+			do Screen.setColor(false);
+			do Screen.drawCircle(  60, 31, 10);
+			do Screen.drawCircle( 452, 31, 10);
+			do Screen.setColor(true);
+			do Screen.drawCircle(  60, 60, 10);
+			do Screen.drawCircle( 452, 60, 10);
+			if (stage = 1){
+				let count = 0;
+				let blockNum=14;
+				let winning = blockNum;
+				let blocks = Array.new(blockNum);
+
+				while (count<(blockNum/2)) {
+					let blocks[count] = Block.new( 170+(i*25), 30, 170+(i*25)+20, 40);
+					let count=count+1; let i=i+1;}
+					
+				let i=0;
+				
+				while (count<blockNum) {
+					let blocks[count] = Block.new( 170+(i*25), 70, 170+(i*25)+20, 80);
+					let count=count+1; let i=i+1;}
+				
+				let count = 0;
+			}
+/**			if (stage = 2){
+				let count = 0;
+				let blockNum=12;
+				let winning = blockNum;
+				let blocks = Array.new(blockNum);
+
+				while (count<4) {
+					let blocks[count] = Block.new( 210+(i*25), 20, 210+(i*25)+20, 30);
+					let count=count+1; let i=i+1;}
+				
+				let i=0;
+				
+				while (count<10) {
+					let blocks[count] = Block.new( 185+(i*25), 35, 185+(i*25)+20, 45);
+					let count=count+1; let i=i+1;}
+				
+				let i=0;
+				
+				while (count<12) {
+					let blocks[count] = Block.new( 210+(i*50), 50, 210+(i*50)+20, 60);
+					let count=count+1; let i=i+1;}
+					
+				let count = 0;
+			}*/
+			if (stage = 2){
+				let count = 0;
+				let blockNum=12;
+				let winning = blockNum;
+				let blocks = Array.new(blockNum);
+				
+				while (count<4) {
+					let blocks[count] = Block.new( 210+(i*25), 55, 210+(i*25)+20, 65);
+					let count = count + 1; let i = i + 1;}
+				
+				let i = 0;
+				
+				while (count<6) {
+					let blocks[count] = Block.new( 210+(i*75), 70, 210+(i*75)+20, 80);
+					let count = count + 1; let i = i + 1;}
+				
+				let i = 0;
+				
+				while (count<8) {
+					let blocks[count] = Block.new( 210+(i*75), 85, 210+(i*75)+20, 95);
+					let count = count + 1; let i = i + 1;}
+				
+				let i = 0;
+				
+				while (count<12) {
+					let blocks[count] = Block.new( 210+(i*25), 100, 210+(i*25)+20, 110);
+					let count = count + 1; let i = i + 1;}
+			}
+			if (stage = 3){
+				let count = 0;
+				let slowness = 15;
+				let blockNum = 28;
+				let winning = blockNum;
+				let blocks = Array.new(blockNum);
+				while (count<5) {
+					let blocks[count] = Block.new( 165, 30+(i*12), 185, 30+(i*12)+10);
+					let count = count + 1; let i = i + 1;}
+				
+				let i = 0;
+				
+				while (count<7) {
+					let blocks[count] = Block.new( 186, 30+(i*48), 206, 30+(i*48)+10);
+					let count = count + 1; let i = i + 1;}
+			
+				let i = 0;
+				
+				while (count<10) {
+					let blocks[count] = Block.new( 217, 30+(i*12), 237, 30+(i*12)+10);
+					let count = count + 1; let i = i + 1;}
+			
+				let i = 0;
+				
+				while (count<11) {
+					let blocks[count] = Block.new( 217, 78+(i*12), 237, 78+(i*12)+10);
+					let count = count + 1; let i = i + 1;}
+			
+				let i = 0;
+				
+				while (count<12) {
+					let blocks[count] = Block.new( 238, 30+(i*12), 258, 30+(i*12)+10);
+					let count = count + 1; let i = i + 1;}
+			
+				let i = 0;
+				
+				while (count<15) {
+					let blocks[count] = Block.new( 238, 54+(i*12), 258, 54+(i*12)+10);
+					let count = count + 1; let i = i + 1;}
+			
+				let i = 0;
+				
+				while (count<20) {
+					let blocks[count] = Block.new( 269, 30+(i*12), 289, 30+(i*12)+10);
+					let count = count + 1; let i = i + 1;}
+			
+				let i = 0;
+				
+				while (count<25) {
+					let blocks[count] = Block.new( 300, 30+(i*12), 320, 30+(i*12)+10);
+					let count = count + 1; let i = i + 1;}
+			
+				let i = 0;
+				
+				while (count<28) {
+					let blocks[count] = Block.new( 321, 30+(i*24), 341, 30+(i*24)+10);
+					let count = count + 1; let i = i + 1;}
+			
+				let i = 0;
+			}
+		}
+			
+		if (type=2){  // the type for the cover
+			let x=220; let y=130;
+			let dirX=3;
+			let dirY=1;
+			let wall = Boarder.new(2);}
+
+		let radius = 5;
+		let hitX = 1;
+		let hitY = 1;
+/**		let diagonal=false;*/     // still working
+		do draw();
+		return this;
+	}
+	
+	/** ending of the game, return to game control. */
+	method int end(){
+		if (winning = blockNum){ return 1;}  // win
+		if (y>240){return 2;}  // lose
+		else {return 0;}
+	}
+	
+	/**  send remain block number to Class SquareGame  */
+	method int giveRemainNum(){
+		return blockNum - winning;
+	}
+	/** send block number to Class Block. */
+	method void sendBlockNum(){
+		do block.getBlockNum( blockNum);
+		return;
+	}
+	
+	/** the initial direction fo the ball (left or right). */
+	method void setBall( int dir){
+		if (dir = 1) {  // left 
+			let dirX = -2; let dirY = -3;}
+		if (dir = 2) {  //right
+			let dirX =  2; let dirY = -3;}
+		return;
+	}
+	
+	/** speed up for the ball, can be adjusted from the cover. */
+	method void speedUp(){
+		if (slowness > 2) { let slowness = slowness-2;}
+		return;
+	}
+	
+	/** speed down for the ball, can be adjusted from the cover. */
+	method void speedDown(){
+		if (slowness < maxTime) { let slowness = slowness+2;}
+		return;
+	}
+	/** Draws the square on the screen. */
+	method void draw() {
+		do Screen.setColor(true);
+		do Screen.drawCircle( x, y, radius);
+		return;
+	}
+	/** Erases the square from the screen. */
+	method void erase() {
+		do Screen.setColor(false);
+		do Screen.drawCircle( x-dirX, y-dirY, radius);
+		return;
+	}
+	
+	method void eraseBounce() {
+		do Screen.setColor(false);
+		do Screen.drawCircle( x, y, radius);
+		return;}
+	/** general movement of the ball */
+	method void move(){
+		let x = x + dirX;
+		let y = y + dirY;
+		do judgeBounce();
+		if (~bounced){do erase(); do draw();}
+		else {do eraseBounce(); do draw();}
+		let bounced = false;
+		do Sys.wait(slowness);	
+		return;
+	}
+	
+	/** judging if the ball is bounced in walls or blocks or square. */
+	method void judgeBounce(){
+		
+		// the ball bounces the boarder
+		let hit = wall.bounceWall( x, y, radius); 
+		do interpretHit();
+		do bounce();
+		
+		// the ball bounces the block
+		if (Type = 1){
+			let count = 0;
+			let winning = 0;
+			while (count < blockNum){
+				let block = blocks[count];
+				let hit=block.bounceBlock( x, y, radius); 
+				if (block.beBounced()){ 
+					if (~block.destroyed()){ do block.disappear();}
+					let winning = winning + 1;
+				}
+				do interpretHit();
+				do bounce(); 
+				let count = count+1;
+			}
+		}let count = 0;
+		
+		// the ball bounces the square
+		let hit = bounceSquare(); 
+		do interpretHit();
+		do bounce();
+		return;
+	}
+	
+	/** interpret hitting message from different sources */
+	method void interpretHit() {
+		if (hit = 2) { let hitX = -1;}
+		if (hit = 3) { let hitY = -1;}
+/**		if (hit = 5) { let diagonal = true;}*/  //  still working
+		if (hit = 6) { let hitX = -1; let hitY = -1;}
+		let hit = 1;
+		return;
+	}
+	
+	/** changing general movement when bounced  */
+	method void bounce (){
+		var int flag;
+		if ((hitX=-1) | (hitY=-1)){
+			let bounced = true; 
+			let x = x - (1*dirX); 
+			let y = y - (1*dirY);}
+		
+		let dirX = dirX * hitX; 
+		let dirY = dirY * hitY;
+/**		if (diagonal){ let flag = dirX; let dirX = -dirY; let dirY = -flag;}*/  //  still working
+		let hitX = 1;
+		let hitY = 1;
+/**		let diagonal = false;*/  //  still working
+		return;
+	}
+	
+	/** give class square position from game control */
+	method void squarePos( int xS, int yS, int L, int Size){
+		let xSquare = xS;
+		let ySquare = yS;
+		let length = L;
+		let size = Size;
+		return;
+	}
+	
+	/** bouncing the square */
+	method int bounceSquare(){
+		var int returnValue;
+		var int xDisLeft , xDisRight, yDisDown, yDisUp; // distance from the ball to the square boarders
+		let returnValue = 1;
+		let yDisUp    = Math.abs(ySquare-y+1);
+		let yDisDown  = Math.abs(ySquare+size-y+1);
+		let xDisLeft  = Math.abs(xSquare-x+1);
+		let xDisRight = Math.abs(xSquare+length-x+1);
+
+		if (((xDisLeft < (radius))|(xDisRight < (radius))) & (y > ySquare) & (y < (ySquare+size))   ){
+			let returnValue = returnValue*2;}
+			
+		if (((yDisUp   < (radius))|(yDisDown  < (radius))) & (x > xSquare) & (x < (xSquare+length)) ){ 			
+			let returnValue = returnValue*3;}
+			
+/**		if ( square.ball2Square( x, y, radius) ) { let returnValue=5;}*/  //  still working
+		return returnValue;
+	}
+	
+	/** dispose the ball and wall */
+	method void dispose(){
+		var int i;
+		let i = 0;
+		do wall.dispose();
+		if (Type = 1){
+			while (i < blockNum){
+				let block = blocks[i];
+				do block.dispose();
+				do Memory.deAlloc(blocks[i]);
+				let i = i + 1;}}
+		do Memory.deAlloc(this);
+		return;
+	}
+}

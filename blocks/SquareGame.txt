@@ -1,0 +1,136 @@
+class SquareGame {
+    static Square square; // the square of this game
+	static Ball ball;     // the ball of this game
+	static boolean exit;  // if the game ends, exit will be true
+    static boolean retry; // retry message sent to Class Main
+	static char key;      // the key pressed by player
+	static int Stage;     // the current stage
+	static int end;       // end type (win or lose)
+	field int X,Y, Vmax, Vmin, time;  // the square position, speed for the cover, the delay time for moving
+	field int direction;  // the current direction: 0=none, 1=up, 2=down, 3=left, 4=right
+	field boolean stop;   // wait for player to choose retry or not
+	
+	/** Constructs a new Square Game. */
+	constructor SquareGame new( int stage) {
+		do Screen.clearScreen();
+		let X = 200;
+		let Y = 200;
+		let Stage = stage;
+		let square = Square.new(X, Y);
+		let ball = Ball.new(1, Stage);  // ball type '1', stage 'stage' 
+		
+		let direction = 0;  // initial state is no movement
+		let Vmax = 15;  // set the maximum "waiting time" till next draw
+		let Vmin = 10;
+		let time = Vmin;
+		return this;
+	}
+
+	/** dispose the game. */
+	method void dispose() {
+		do square.dispose();
+		do ball.dispose();
+		do Memory.deAlloc(this);
+		return;
+	}
+
+	/** moves the square in the current direction. */
+	method void moveSquare() {
+		if (~(stop)){
+		if (direction = 1) { do square.moveLeft(); }
+		if (direction = 2) { do square.moveRight(); }
+		}
+		return;
+	}
+	
+	/**  get the ball position from Class Ball  */
+	method void giveBallPos() {
+		var int xS, yS, L, Size;
+		let xS = square.askForPos(1);
+		let yS = square.askForPos(2);
+		let L  = square.askForPos(3);
+		let Size = square.askForPos(4);
+		do ball.squarePos(xS, yS, L, Size);
+		return;
+	}
+
+	/** run the controlling until result */
+	method void run() {
+		let key = 0; // the key currently pressed by the user
+		let exit = false;
+		
+		while (~(key=130) & ~(key=132)) {
+			let key = Keyboard.keyPressed();
+			if (key = 130) { do ball.setBall(1); }   // left arrow
+			if (key = 132) { do ball.setBall(2); }   // right arrow
+			
+		}
+		while (~exit) {
+			/** key unpressed */
+			while ((key = 0)&(~exit)) {
+				do ball.move();
+				let key = Keyboard.keyPressed();
+				do moveSquare();
+				do giveBallPos();
+				do result();
+				do Sys.wait(1);
+			}
+				if (key = 130) { let direction = 1; }   // left arrow
+				if (key = 132) { let direction = 2; }   // right arrow
+				
+			/**  key pressed  */
+			while ((~(key = 0))&(~exit)) {
+				do ball.move();
+				let stop = false;
+				let key = Keyboard.keyPressed();
+				do moveSquare();
+				do giveBallPos();
+				do result();
+				do Sys.wait(1);
+			}
+		}
+		return;
+    }
+	
+	/**  return retry message to Class Main  */
+	method boolean retryGame(){
+		return retry;
+	}
+	
+	/**  return result to Class Main  */
+	method int endResult(){
+		return end;
+	}
+	/**  result processing */
+	method void result(){
+		var Cover win, lose;
+		let end = ball.end();  // get end message from Class Ball
+		let retry = true;
+		
+		// win
+		if (end=1){
+			if (Stage = 3){let win = Cover.new(1);}
+			let retry = false;
+			let exit = true; 
+			do Sys.wait(1500);
+			} 
+	
+		// lose
+		if (end=2){
+			if (Stage = 3) {  // shows the losing message
+				let lose = Cover.new(3);
+			}else {let lose = Cover.new(2);}  
+			
+			let exit = true;
+			do Sys.wait(1500);
+			
+			do Output.moveCursor(13, 19);
+			do Output.printString("Retry? press yes or no(Y/N).");
+			while (~(stop)){
+				let key = Keyboard.keyPressed();
+				if (key = 89) { let retry =  true; let stop = true;}  // yes
+				if (key = 78) { let retry = false; let stop = true;}  // no
+			}}
+		return;
+	}
+}

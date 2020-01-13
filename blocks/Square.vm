@@ -1,0 +1,177 @@
+function Square.new 0
+push constant 1
+call Memory.alloc 1
+pop pointer 0
+push argument 0
+pop static 0
+push argument 1
+pop static 1
+push constant 6
+pop static 4
+push constant 6
+pop static 2
+push constant 40
+pop static 3
+push pointer 0
+call Square.draw 1
+pop temp 0
+push pointer 0
+return
+function Square.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function Square.draw 0
+push argument 0
+pop pointer 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push static 0
+push static 1
+push static 0
+push static 3
+add
+push static 1
+push static 2
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function Square.erase 0
+push argument 0
+pop pointer 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push static 0
+push static 1
+push static 0
+push static 3
+add
+push static 1
+push static 2
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function Square.moveLeft 0
+push argument 0
+pop pointer 0
+push static 0
+push constant 159
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+call Square.erase 1
+pop temp 0
+push static 0
+push static 4
+sub
+pop static 0
+push static 0
+push constant 159
+lt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 159
+push constant 1
+add
+pop static 0
+label IF_FALSE1
+push pointer 0
+call Square.draw 1
+pop temp 0
+label IF_FALSE0
+push constant 0
+return
+function Square.moveRight 0
+push argument 0
+pop pointer 0
+push static 0
+push static 3
+add
+push constant 353
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+call Square.erase 1
+pop temp 0
+push static 0
+push static 4
+add
+pop static 0
+push static 0
+push static 3
+add
+push constant 353
+gt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 353
+push static 3
+sub
+push constant 1
+sub
+pop static 0
+label IF_FALSE1
+push pointer 0
+call Square.draw 1
+pop temp 0
+label IF_FALSE0
+push constant 0
+return
+function Square.askForPos 0
+push argument 0
+pop pointer 0
+push argument 1
+push constant 1
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push static 0
+return
+label IF_FALSE0
+push argument 1
+push constant 2
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push static 1
+return
+label IF_FALSE1
+push argument 1
+push constant 3
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push static 3
+return
+label IF_FALSE2
+push argument 1
+push constant 4
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push static 2
+return
+label IF_FALSE3
+push constant 0
+return

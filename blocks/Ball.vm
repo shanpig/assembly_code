@@ -1,0 +1,1256 @@
+function Ball.new 1
+push constant 1
+call Memory.alloc 1
+pop pointer 0
+push constant 0
+pop local 0
+push argument 0
+pop static 22
+push argument 1
+pop static 19
+push constant 20
+pop static 15
+push static 15
+pop static 14
+push argument 0
+push constant 1
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 1
+call Boarder.new 1
+pop static 1
+push constant 200
+pop static 20
+push constant 195
+pop static 21
+push constant 60
+push constant 30
+push constant 10
+call Screen.drawCircle 3
+pop temp 0
+push constant 452
+push constant 30
+push constant 10
+call Screen.drawCircle 3
+pop temp 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push constant 60
+push constant 31
+push constant 10
+call Screen.drawCircle 3
+pop temp 0
+push constant 452
+push constant 31
+push constant 10
+call Screen.drawCircle 3
+pop temp 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push constant 60
+push constant 60
+push constant 10
+call Screen.drawCircle 3
+pop temp 0
+push constant 452
+push constant 60
+push constant 10
+call Screen.drawCircle 3
+pop temp 0
+push argument 1
+push constant 1
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+pop static 9
+push constant 14
+pop static 8
+push static 8
+pop static 10
+push static 8
+call Array.new 1
+pop static 2
+label WHILE_EXP0
+push static 9
+push static 8
+push constant 2
+call Math.divide 2
+lt
+not
+if-goto WHILE_END0
+push static 9
+push static 2
+add
+push constant 170
+push local 0
+push constant 25
+call Math.multiply 2
+add
+push constant 30
+push constant 170
+push local 0
+push constant 25
+call Math.multiply 2
+add
+push constant 20
+add
+push constant 40
+call Block.new 4
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push static 9
+push constant 1
+add
+pop static 9
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+pop local 0
+label WHILE_EXP1
+push static 9
+push static 8
+lt
+not
+if-goto WHILE_END1
+push static 9
+push static 2
+add
+push constant 170
+push local 0
+push constant 25
+call Math.multiply 2
+add
+push constant 70
+push constant 170
+push local 0
+push constant 25
+call Math.multiply 2
+add
+push constant 20
+add
+push constant 80
+call Block.new 4
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push static 9
+push constant 1
+add
+pop static 9
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP1
+label WHILE_END1
+push constant 0
+pop static 9
+label IF_FALSE1
+push argument 1
+push constant 2
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 0
+pop static 9
+push constant 12
+pop static 8
+push static 8
+pop static 10
+push static 8
+call Array.new 1
+pop static 2
+label WHILE_EXP2
+push static 9
+push constant 4
+lt
+not
+if-goto WHILE_END2
+push static 9
+push static 2
+add
+push constant 210
+push local 0
+push constant 25
+call Math.multiply 2
+add
+push constant 55
+push constant 210
+push local 0
+push constant 25
+call Math.multiply 2
+add
+push constant 20
+add
+push constant 65
+call Block.new 4
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push static 9
+push constant 1
+add
+pop static 9
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP2
+label WHILE_END2
+push constant 0
+pop local 0
+label WHILE_EXP3
+push static 9
+push constant 6
+lt
+not
+if-goto WHILE_END3
+push static 9
+push static 2
+add
+push constant 210
+push local 0
+push constant 75
+call Math.multiply 2
+add
+push constant 70
+push constant 210
+push local 0
+push constant 75
+call Math.multiply 2
+add
+push constant 20
+add
+push constant 80
+call Block.new 4
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push static 9
+push constant 1
+add
+pop static 9
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP3
+label WHILE_END3
+push constant 0
+pop local 0
+label WHILE_EXP4
+push static 9
+push constant 8
+lt
+not
+if-goto WHILE_END4
+push static 9
+push static 2
+add
+push constant 210
+push local 0
+push constant 75
+call Math.multiply 2
+add
+push constant 85
+push constant 210
+push local 0
+push constant 75
+call Math.multiply 2
+add
+push constant 20
+add
+push constant 95
+call Block.new 4
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push static 9
+push constant 1
+add
+pop static 9
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP4
+label WHILE_END4
+push constant 0
+pop local 0
+label WHILE_EXP5
+push static 9
+push constant 12
+lt
+not
+if-goto WHILE_END5
+push static 9
+push static 2
+add
+push constant 210
+push local 0
+push constant 25
+call Math.multiply 2
+add
+push constant 100
+push constant 210
+push local 0
+push constant 25
+call Math.multiply 2
+add
+push constant 20
+add
+push constant 110
+call Block.new 4
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push static 9
+push constant 1
+add
+pop static 9
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP5
+label WHILE_END5
+label IF_FALSE2
+push argument 1
+push constant 3
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push constant 0
+pop static 9
+push constant 15
+pop static 14
+push constant 28
+pop static 8
+push static 8
+pop static 10
+push static 8
+call Array.new 1
+pop static 2
+label WHILE_EXP6
+push static 9
+push constant 5
+lt
+not
+if-goto WHILE_END6
+push static 9
+push static 2
+add
+push constant 165
+push constant 30
+push local 0
+push constant 12
+call Math.multiply 2
+add
+push constant 185
+push constant 30
+push local 0
+push constant 12
+call Math.multiply 2
+add
+push constant 10
+add
+call Block.new 4
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push static 9
+push constant 1
+add
+pop static 9
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP6
+label WHILE_END6
+push constant 0
+pop local 0
+label WHILE_EXP7
+push static 9
+push constant 7
+lt
+not
+if-goto WHILE_END7
+push static 9
+push static 2
+add
+push constant 186
+push constant 30
+push local 0
+push constant 48
+call Math.multiply 2
+add
+push constant 206
+push constant 30
+push local 0
+push constant 48
+call Math.multiply 2
+add
+push constant 10
+add
+call Block.new 4
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push static 9
+push constant 1
+add
+pop static 9
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP7
+label WHILE_END7
+push constant 0
+pop local 0
+label WHILE_EXP8
+push static 9
+push constant 10
+lt
+not
+if-goto WHILE_END8
+push static 9
+push static 2
+add
+push constant 217
+push constant 30
+push local 0
+push constant 12
+call Math.multiply 2
+add
+push constant 237
+push constant 30
+push local 0
+push constant 12
+call Math.multiply 2
+add
+push constant 10
+add
+call Block.new 4
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push static 9
+push constant 1
+add
+pop static 9
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP8
+label WHILE_END8
+push constant 0
+pop local 0
+label WHILE_EXP9
+push static 9
+push constant 11
+lt
+not
+if-goto WHILE_END9
+push static 9
+push static 2
+add
+push constant 217
+push constant 78
+push local 0
+push constant 12
+call Math.multiply 2
+add
+push constant 237
+push constant 78
+push local 0
+push constant 12
+call Math.multiply 2
+add
+push constant 10
+add
+call Block.new 4
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push static 9
+push constant 1
+add
+pop static 9
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP9
+label WHILE_END9
+push constant 0
+pop local 0
+label WHILE_EXP10
+push static 9
+push constant 12
+lt
+not
+if-goto WHILE_END10
+push static 9
+push static 2
+add
+push constant 238
+push constant 30
+push local 0
+push constant 12
+call Math.multiply 2
+add
+push constant 258
+push constant 30
+push local 0
+push constant 12
+call Math.multiply 2
+add
+push constant 10
+add
+call Block.new 4
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push static 9
+push constant 1
+add
+pop static 9
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP10
+label WHILE_END10
+push constant 0
+pop local 0
+label WHILE_EXP11
+push static 9
+push constant 15
+lt
+not
+if-goto WHILE_END11
+push static 9
+push static 2
+add
+push constant 238
+push constant 54
+push local 0
+push constant 12
+call Math.multiply 2
+add
+push constant 258
+push constant 54
+push local 0
+push constant 12
+call Math.multiply 2
+add
+push constant 10
+add
+call Block.new 4
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push static 9
+push constant 1
+add
+pop static 9
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP11
+label WHILE_END11
+push constant 0
+pop local 0
+label WHILE_EXP12
+push static 9
+push constant 20
+lt
+not
+if-goto WHILE_END12
+push static 9
+push static 2
+add
+push constant 269
+push constant 30
+push local 0
+push constant 12
+call Math.multiply 2
+add
+push constant 289
+push constant 30
+push local 0
+push constant 12
+call Math.multiply 2
+add
+push constant 10
+add
+call Block.new 4
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push static 9
+push constant 1
+add
+pop static 9
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP12
+label WHILE_END12
+push constant 0
+pop local 0
+label WHILE_EXP13
+push static 9
+push constant 25
+lt
+not
+if-goto WHILE_END13
+push static 9
+push static 2
+add
+push constant 300
+push constant 30
+push local 0
+push constant 12
+call Math.multiply 2
+add
+push constant 320
+push constant 30
+push local 0
+push constant 12
+call Math.multiply 2
+add
+push constant 10
+add
+call Block.new 4
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push static 9
+push constant 1
+add
+pop static 9
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP13
+label WHILE_END13
+push constant 0
+pop local 0
+label WHILE_EXP14
+push static 9
+push constant 28
+lt
+not
+if-goto WHILE_END14
+push static 9
+push static 2
+add
+push constant 321
+push constant 30
+push local 0
+push constant 24
+call Math.multiply 2
+add
+push constant 341
+push constant 30
+push local 0
+push constant 24
+call Math.multiply 2
+add
+push constant 10
+add
+call Block.new 4
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push static 9
+push constant 1
+add
+pop static 9
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP14
+label WHILE_END14
+push constant 0
+pop local 0
+label IF_FALSE3
+label IF_FALSE0
+push argument 0
+push constant 2
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push constant 220
+pop static 20
+push constant 130
+pop static 21
+push constant 3
+pop static 16
+push constant 1
+pop static 17
+push constant 2
+call Boarder.new 1
+pop static 1
+label IF_FALSE4
+push constant 5
+pop static 18
+push constant 1
+pop static 11
+push constant 1
+pop static 12
+push pointer 0
+call Ball.draw 1
+pop temp 0
+push pointer 0
+return
+function Ball.end 0
+push argument 0
+pop pointer 0
+push static 10
+push static 8
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 1
+return
+label IF_FALSE0
+push static 21
+push constant 240
+gt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 2
+return
+goto IF_END1
+label IF_FALSE1
+push constant 0
+return
+label IF_END1
+function Ball.giveRemainNum 0
+push argument 0
+pop pointer 0
+push static 8
+push static 10
+sub
+return
+function Ball.sendBlockNum 0
+push argument 0
+pop pointer 0
+push static 0
+push static 8
+call Block.getBlockNum 2
+pop temp 0
+push constant 0
+return
+function Ball.setBall 0
+push argument 0
+pop pointer 0
+push argument 1
+push constant 1
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 2
+neg
+pop static 16
+push constant 3
+neg
+pop static 17
+label IF_FALSE0
+push argument 1
+push constant 2
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 2
+pop static 16
+push constant 3
+neg
+pop static 17
+label IF_FALSE1
+push constant 0
+return
+function Ball.speedUp 0
+push argument 0
+pop pointer 0
+push static 14
+push constant 2
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push static 14
+push constant 2
+sub
+pop static 14
+label IF_FALSE0
+push constant 0
+return
+function Ball.speedDown 0
+push argument 0
+pop pointer 0
+push static 14
+push static 15
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push static 14
+push constant 2
+add
+pop static 14
+label IF_FALSE0
+push constant 0
+return
+function Ball.draw 0
+push argument 0
+pop pointer 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push static 20
+push static 21
+push static 18
+call Screen.drawCircle 3
+pop temp 0
+push constant 0
+return
+function Ball.erase 0
+push argument 0
+pop pointer 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push static 20
+push static 16
+sub
+push static 21
+push static 17
+sub
+push static 18
+call Screen.drawCircle 3
+pop temp 0
+push constant 0
+return
+function Ball.eraseBounce 0
+push argument 0
+pop pointer 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push static 20
+push static 21
+push static 18
+call Screen.drawCircle 3
+pop temp 0
+push constant 0
+return
+function Ball.move 0
+push argument 0
+pop pointer 0
+push static 20
+push static 16
+add
+pop static 20
+push static 21
+push static 17
+add
+pop static 21
+push pointer 0
+call Ball.judgeBounce 1
+pop temp 0
+push static 3
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+call Ball.erase 1
+pop temp 0
+push pointer 0
+call Ball.draw 1
+pop temp 0
+goto IF_END0
+label IF_FALSE0
+push pointer 0
+call Ball.eraseBounce 1
+pop temp 0
+push pointer 0
+call Ball.draw 1
+pop temp 0
+label IF_END0
+push constant 0
+pop static 3
+push static 14
+call Sys.wait 1
+pop temp 0
+push constant 0
+return
+function Ball.judgeBounce 0
+push argument 0
+pop pointer 0
+push static 1
+push static 20
+push static 21
+push static 18
+call Boarder.bounceWall 4
+pop static 23
+push pointer 0
+call Ball.interpretHit 1
+pop temp 0
+push pointer 0
+call Ball.bounce 1
+pop temp 0
+push static 22
+push constant 1
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+pop static 9
+push constant 0
+pop static 10
+label WHILE_EXP0
+push static 9
+push static 8
+lt
+not
+if-goto WHILE_END0
+push static 9
+push static 2
+add
+pop pointer 1
+push that 0
+pop static 0
+push static 0
+push static 20
+push static 21
+push static 18
+call Block.bounceBlock 4
+pop static 23
+push static 0
+call Block.beBounced 1
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push static 0
+call Block.destroyed 1
+not
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push static 0
+call Block.disappear 1
+pop temp 0
+label IF_FALSE2
+push static 10
+push constant 1
+add
+pop static 10
+label IF_FALSE1
+push pointer 0
+call Ball.interpretHit 1
+pop temp 0
+push pointer 0
+call Ball.bounce 1
+pop temp 0
+push static 9
+push constant 1
+add
+pop static 9
+goto WHILE_EXP0
+label WHILE_END0
+label IF_FALSE0
+push constant 0
+pop static 9
+push pointer 0
+call Ball.bounceSquare 1
+pop static 23
+push pointer 0
+call Ball.interpretHit 1
+pop temp 0
+push pointer 0
+call Ball.bounce 1
+pop temp 0
+push constant 0
+return
+function Ball.interpretHit 0
+push argument 0
+pop pointer 0
+push static 23
+push constant 2
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 1
+neg
+pop static 11
+label IF_FALSE0
+push static 23
+push constant 3
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 1
+neg
+pop static 12
+label IF_FALSE1
+push static 23
+push constant 6
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 1
+neg
+pop static 11
+push constant 1
+neg
+pop static 12
+label IF_FALSE2
+push constant 1
+pop static 23
+push constant 0
+return
+function Ball.bounce 1
+push argument 0
+pop pointer 0
+push static 11
+push constant 1
+neg
+eq
+push static 12
+push constant 1
+neg
+eq
+or
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+not
+pop static 3
+push static 20
+push constant 1
+push static 16
+call Math.multiply 2
+sub
+pop static 20
+push static 21
+push constant 1
+push static 17
+call Math.multiply 2
+sub
+pop static 21
+label IF_FALSE0
+push static 16
+push static 11
+call Math.multiply 2
+pop static 16
+push static 17
+push static 12
+call Math.multiply 2
+pop static 17
+push constant 1
+pop static 11
+push constant 1
+pop static 12
+push constant 0
+return
+function Ball.squarePos 0
+push argument 0
+pop pointer 0
+push argument 1
+pop static 4
+push argument 2
+pop static 5
+push argument 3
+pop static 6
+push argument 4
+pop static 7
+push constant 0
+return
+function Ball.bounceSquare 5
+push argument 0
+pop pointer 0
+push constant 1
+pop local 0
+push static 5
+push static 21
+sub
+push constant 1
+add
+call Math.abs 1
+pop local 4
+push static 5
+push static 7
+add
+push static 21
+sub
+push constant 1
+add
+call Math.abs 1
+pop local 3
+push static 4
+push static 20
+sub
+push constant 1
+add
+call Math.abs 1
+pop local 1
+push static 4
+push static 6
+add
+push static 20
+sub
+push constant 1
+add
+call Math.abs 1
+pop local 2
+push local 1
+push static 18
+lt
+push local 2
+push static 18
+lt
+or
+push static 21
+push static 5
+gt
+and
+push static 21
+push static 5
+push static 7
+add
+lt
+and
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 0
+push constant 2
+call Math.multiply 2
+pop local 0
+label IF_FALSE0
+push local 4
+push static 18
+lt
+push local 3
+push static 18
+lt
+or
+push static 20
+push static 4
+gt
+and
+push static 20
+push static 4
+push static 6
+add
+lt
+and
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 0
+push constant 3
+call Math.multiply 2
+pop local 0
+label IF_FALSE1
+push local 0
+return
+function Ball.dispose 1
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+push static 1
+call Boarder.dispose 1
+pop temp 0
+push static 22
+push constant 1
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+label WHILE_EXP0
+push local 0
+push static 8
+lt
+not
+if-goto WHILE_END0
+push local 0
+push static 2
+add
+pop pointer 1
+push that 0
+pop static 0
+push static 0
+call Block.dispose 1
+pop temp 0
+push local 0
+push static 2
+add
+pop pointer 1
+push that 0
+call Memory.deAlloc 1
+pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+label IF_FALSE0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return

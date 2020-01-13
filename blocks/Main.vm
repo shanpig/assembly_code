@@ -1,0 +1,75 @@
+function Main.main 6
+push constant 0
+not
+pop local 3
+push constant 1
+pop local 5
+push constant 0
+pop local 4
+call Screen.clearScreen 0
+pop temp 0
+push constant 0
+pop local 3
+push constant 0
+call Cover.new 1
+pop local 1
+push constant 2
+call Boarder.new 1
+pop local 2
+push local 1
+call Cover.show 1
+pop temp 0
+push local 1
+call Cover.dispose 1
+pop temp 0
+push local 2
+call Boarder.dispose 1
+pop temp 0
+label WHILE_EXP0
+push local 4
+push constant 3
+lt
+push local 5
+push constant 1
+eq
+push local 5
+push constant 2
+eq
+push local 3
+and
+or
+and
+not
+if-goto WHILE_END0
+push local 3
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 4
+push constant 1
+add
+pop local 4
+label IF_FALSE0
+push local 4
+call SquareGame.new 1
+pop local 0
+push constant 15
+call Sys.wait 1
+pop temp 0
+push local 0
+call SquareGame.run 1
+pop temp 0
+push local 0
+call SquareGame.endResult 1
+pop local 5
+push local 0
+call SquareGame.retryGame 1
+pop local 3
+push local 0
+call SquareGame.dispose 1
+pop temp 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return

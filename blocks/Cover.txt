@@ -1,0 +1,135 @@
+class Cover {
+	field int build;
+	field int x, y, x1, y1, x2, y2, x3, y3, type, addX, addY;
+	static Ball ball;
+	static Block block;
+	static boolean retry;
+
+	constructor Cover new( int type){
+		var boolean stop;
+		var char key;
+		let key = 0;
+		let stop = false;
+		
+		if (type = 1){  // win cover
+			do Output.moveCursor(10, 22);
+			do Output.printString("Congratulations!!!!!");
+			do Output.moveCursor(12, 23);
+			do Output.printString("You got an A+ !!!!!");
+		}
+		if (type = 2){  // lose cover
+			do Output.moveCursor(11, 29);
+			do Output.printString("YouLose");
+		}
+		if (type = 3){  // fail CSIE cover
+			do Output.moveCursor(10, 24);
+			do Output.printString("You got an F !!!!!");
+		}
+		
+		if (type = 0){
+			let ball = Ball.new(2, 1);
+			let block = Block.new( 115, 221, 135, 231);
+			let block = Block.new( 380, 221, 400, 231);
+			
+			do Screen.setColor(true);
+				do Screen.drawRectangle(  75, 40, 135, 190); //B
+				do Screen.drawRectangle( 140, 40, 200, 190); //L
+				do Screen.drawRectangle( 205, 40, 265, 190); //O
+				do Screen.drawRectangle( 270, 40, 330, 190); //C
+				do Screen.drawRectangle( 335, 40, 395, 190); //K
+				do Screen.drawRectangle( 400, 40, 460, 190); //S
+			do Screen.setColor(false);
+				do Screen.drawRectangle(  85,  50, 125, 110);//B
+				do Screen.drawRectangle(  85, 120, 125, 180);
+				do Screen.drawRectangle( 150,  40, 190, 180);//L
+				do Screen.drawRectangle( 150,  40, 200, 110);
+				do Screen.drawRectangle( 215,  50, 255, 180);//O
+				do Screen.drawRectangle( 280,  50, 330, 180);//C
+				do drawRightTriangle   ( 345,  40,  35,  70, false);//K
+				do drawRightTriangle   ( 345, 190,  35, -70, false);
+				do drawRightTriangle   ( 395, 115, -39, -78, false);
+				do drawRightTriangle   ( 395, 115, -39,  78, false);
+				do Screen.drawRectangle( 410,  50, 460, 110);//S
+				do Screen.drawRectangle( 400, 120, 450, 180);
+			do Screen.setColor(true);
+				do Screen.drawRectangle( 400, 150, 410, 180);
+				do Screen.drawRectangle(  58,  40,  75,  48);
+				do Screen.drawRectangle(  58, 182,  75, 190);
+			do Output.moveCursor(20, 20);
+			do Output.printString("press whitespace to start.");}
+
+			return this;
+	}
+	
+	/**  return retry message to Class Main  */
+	method boolean retryGame(){
+		return retry;
+	}
+	
+	/**  showcase the cover animation  */
+	method void show(){
+		var boolean start;
+		var int key;
+		let start = false;
+		let key=0;
+		while (~(start)){
+		
+			while (key = 0) {  // key unpressed
+				do ball.move();
+				do Sys.wait(10);
+				let key = Keyboard.keyPressed();
+			}
+				
+				if (key = 130) { do ball.speedDown();   }   // left arrow
+				if (key = 132) { do ball.speedUp();     }   // right arrow
+				if (key =  32) { let start = true; }   // space
+
+			while (~(key = 0)) {  // key pressed
+				do ball.move();
+				do Sys.wait(10);
+				let key = Keyboard.keyPressed();
+			}
+		}
+		return;
+	}
+
+	/**  dispose the cover and ball for animation */
+	method void dispose(){
+			do ball.dispose();
+			do Memory.deAlloc(this);
+			return;
+	}
+	
+	/**  draw a triangle by giving right angle pivot and the span of X and Y direction ( limit: yL>=xL)  */
+	method void drawRightTriangle( int X, int Y, int xL, int yL, boolean color){ 
+		var int x,y, slope;
+		let slope = yL / xL;
+		let x = X + xL; let y = 0;
+		
+		do Screen.setColor(color);
+		if ((xL>0) & (yL>0)){
+			while (y < yL){
+				do Screen.drawRectangle(X, Y+y, x-(y/slope), Y+y);
+				let y = y + 1;}
+		} // case 1
+		
+		if ((xL<0) & (yL>0)){ 
+			while (y < yL){
+				do Screen.drawRectangle(x-(y/slope), Y+y, X, Y+y);
+				let y = y + 1;}
+		} // case 2
+		
+		if ((xL<0) & (yL<0)){ 
+			while (y > yL){
+				do Screen.drawRectangle(x-(y/slope), Y+y, X, Y+y);
+				let y = y - 1;}
+		} // case 3
+		
+		if ((xL>0) & (yL<0)){
+			while (y > yL){
+				do Screen.drawRectangle(X, Y+y, x-(y/slope), Y+y);
+				let y = y - 1;}		
+		} // case 4
+		return;
+	}
+}

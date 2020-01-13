@@ -1,0 +1,65 @@
+/** Implements a graphical square. */
+class Square {
+	field int build;
+	static int x, y; // screen location of the square's top-left corner
+	static int size, length; //height & length of this square, in pixels
+	static int rate; // speed of the ball
+	
+	/** create the  */
+	constructor Square new( int X, int Y) {
+	let x = X;
+	let y = Y;
+	let rate = 6;
+	let size = 6;
+	let length = 40;
+	do draw();
+	return this;
+	}
+	
+	/** dispose the square. */
+	method void dispose() {
+		do Memory.deAlloc(this);
+		return;
+	}
+
+	/** Draws the square on the screen. */
+	method void draw() {
+		do Screen.setColor(true);
+		do Screen.drawRectangle(x, y, x + length, y + size);
+		return;
+	}
+	/** Erases the square from the screen. */
+	method void erase() {
+		do Screen.setColor(false);
+		do Screen.drawRectangle(x, y, x + length, y + size);
+		return;
+	}
+	/** Moves the square left by 2 pixels. */
+	method void moveLeft() {
+		if (x > 159) {
+			do erase();
+			let x = x - rate;
+			if (x < 159) { let x = 159 + 1;}
+			do draw();
+	}
+	return;
+	}
+	/** Moves the square right by 2 pixels. */
+	method void moveRight() {
+		if ((x + length) < 353) {
+			do erase();
+			let x = x + rate;
+			if ((x+length) > 353) { let x=353-length-1;}
+			do draw();
+		}
+	return;
+	}
+
+	method int askForPos( int index) {
+		if (index = 1) { return x;}
+		if (index = 2) { return y;}
+		if (index = 3) { return length;}
+		if (index = 4) { return size;}
+		return 0;
+	}
+}

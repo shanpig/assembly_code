@@ -1,0 +1,46 @@
+class Boarder{
+	field int build;
+	static int x1,x2,x3,x4,x5,
+	           y1,y2,y3,y4,y5;
+
+	constructor Boarder new( int type){
+		if (type = 1){  // the type for the game
+			let x1 = 156;   let y1 =   0;
+			let x2 = 159;   let y2 = 250;
+			let x3 = 356;   let y3 =   3;
+			let x4 = 353;   let y4 =   0;
+			let x5 = 356;   let y5 = 250;
+			do Screen.setColor(true);
+			do Screen.drawRectangle(x1, y1, x2, y2);
+			do Screen.drawRectangle(x1, y1, x3, y3);
+			do Screen.drawRectangle(x4, y4, x5, y5);
+			do Screen.drawRectangle(156, 251, 356, 255);}
+		if (type = 2){  // the type for the cover
+			let x1 = 210; let y1 =  40;
+			let x2 = 214; let y2 = 180;
+			let x3 = 264; let y3 =  50;
+			let x4 = 256; let y4 =  40;
+			let x5 = 265; let y5 = 180;}
+		return this;
+	}
+	
+	/**  return bouncing result to Class Ball  */
+	method int bounceWall( int x, int y, int radius) {
+		var int xLeft, xRight, yUp, yDown, returnValue;
+		let returnValue = 1;
+		let yUp    = y-radius-1;
+		let yDown  = y+radius+1;
+		let xLeft  = x-radius-1;
+		let xRight = x+radius+1;
+		
+		if ((xLeft<x2)|(xRight>x4)) { let returnValue=returnValue*2;}
+		if ((yUp  <y3)|(yDown >y2)) { let returnValue=returnValue*3;}         // yDown is debugging for down boarder	
+		return returnValue;
+	}
+	
+	/**  dispose the walls  */
+	method void dispose(){
+		do Memory.deAlloc(this);
+		return;
+	}
+}

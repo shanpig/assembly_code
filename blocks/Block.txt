@@ -1,0 +1,170 @@
+class Block{
+	field int x1, x2, y1, y2, blockNum;
+	field boolean bounced, destroyed;
+	
+	constructor Block new( int x, int y, int X, int Y){
+		
+		let x1 = x; // boarder of the block
+		let x2 = X;
+		let y1 = y;
+		let y2 = Y;
+		let bounced = false;
+		let destroyed = false;
+		do draw();
+		return this;
+	}
+	
+	/** draw a block. */
+	method void draw(){
+		do Screen.setColor(false);
+		do Screen.drawRectangle( x1-1, y1-1, x2+1, y2+1);
+		do Screen.setColor(true);
+		do Screen.drawRectangle( x1, y1, x2, y2);
+
+		do drawQuarterCircle( x2, y2, 3, 3, false);
+		do drawQuarterCircle( x1, y2, 3, 4, false);
+		do drawQuarterCircle( x1, y1, 3, 1, false);
+		do drawQuarterCircle( x2, y1, 3, 2, false);
+
+		do Screen.drawCircle((x1+x2)/2, (y1+y2)/2, 1);
+		return;
+	}
+	
+	/** decoration for the block. */
+	method void drawQuarterCircle( int x, int y, int radius, int type, boolean color){
+		var int flag, X, Y, xDis, yDis;
+		let X = x; let Y = y;
+		
+		if (type = 1){
+			while (x < (X+radius)){
+			let y = Y;
+			while (y < (Y+radius)){
+				let xDis = (x-X)*(x-X);
+				let yDis = (Y-y)*(Y-y);
+				do Screen.setColor(color);
+				if ((xDis+yDis) < (radius*radius)){ do Screen.drawPixel(x,y );}
+				let y = y + 1;}
+			let x = x + 1;
+		}}
+		if (type = 2){
+			while (x > (X-radius)){
+			let y = Y;
+			while (y < (Y+radius)){
+				let xDis = (x-X)*(x-X);
+				let yDis = (Y-y)*(Y-y);
+				do Screen.setColor(color);
+				if ((xDis+yDis) < (radius*radius)){ do Screen.drawPixel( x, y);}
+				let y = y + 1;}
+			let x = x - 1;
+		}}
+		if (type = 3){
+			while (x > (X-radius)){
+			let y = Y;
+			while (y > (Y-radius)){
+				let xDis = (x-X)*(x-X);
+				let yDis = (Y-y)*(Y-y);
+				do Screen.setColor(color);
+				if ((xDis+yDis) < (radius*radius)){ do Screen.drawPixel( x, y);}
+				let y = y - 1;}
+			let x = x - 1;
+		}}
+		if (type = 4){
+			while (x < (X+radius)){
+			let y = Y;
+			while (y > (Y-radius)){
+				let xDis = (x-X)*(x-X);
+				let yDis = (Y-y)*(Y-y);
+				do Screen.setColor(color);
+				if ((xDis+yDis) < (radius*radius)){ do Screen.drawPixel( x, y);}
+				let y =y - 1;}
+			let x = x + 1;
+		}}
+		return;
+	}
+	
+	/**  detect and report if the block is bounced  */
+	method boolean beBounced(){
+		return bounced;
+	}
+	
+	/** get the block number from class Ball. */
+	method void getBlockNum( int number){
+		let blockNum = number;
+		return;
+	}
+	
+	/**    */
+	method boolean destroyed(){
+		return destroyed;
+	}
+	
+	/** erase the block. */
+	method void disappear(){
+		let destroyed = true;
+		do Screen.setColor(false);
+		do Screen.drawRectangle( x1, y1, x2, y2);
+		return;
+	}
+	
+	/** judge if the ball bounced the block. */
+	method int bounceBlock( int x, int y, int radius){
+		
+		var int returnValue;
+		var int xDisLeft , xDisRight, yDisDown, yDisUp; // distance from the ball to the block boarders
+		if (~(bounced)){
+			let returnValue = 1;
+			let yDisUp    = Math.abs(y1-y+1);
+			let yDisDown  = Math.abs(y2-y+1);
+			let xDisLeft  = Math.abs(x1-x+1);
+			let xDisRight = Math.abs(x2-x+1);
+			
+			if (((xDisLeft < (radius))|(xDisRight < (radius))) & (y>y1) & (y<y2) ){ 			
+				let returnValue = returnValue*2; 
+				let bounced = true;}
+				
+			if (((yDisUp < (radius))|(yDisDown < (radius))) & (x>x1) & (x<x2) ){ 			
+				let returnValue = returnValue*3;
+				let bounced = true;}
+				
+/**			if ( ball2Block( x, y, radius)) { let returnValue=5;}*/  //  still working
+
+			return returnValue;
+		}
+		else { return 1;}
+	}
+	
+	/** dispose the block. */
+	method void dispose(){
+		do Memory.deAlloc(this);
+		return;		
+	}
+	
+	/** diagonal hitting of the block. */
+	/**(still fixing errors)*/
+	method boolean ball2Block( int x, int y, int radius){
+		var int x1x, x2x, y1y, y2y;
+		let x1x = Math.abs((x-x1)*(x-x1));
+		let x2x = Math.abs((x-x2)*(x-x2));
+		let y1y = Math.abs((y-y1)*(y-y1));
+		let y2y = Math.abs((y-y2)*(y-y2));
+		
+		do Screen.setColor(true);
+		if ((x<x1) & (y<y1)){
+			if ((x1x+y1y) < (Math.multiply(radius,radius))){do Screen.drawCircle(x,y,3);	
+			return true;
+		}else {return false;}}
+		if ((x<x1) & (y>y2)){
+			if ((x1x+y2y) < (Math.multiply(radius,radius))){do Screen.drawCircle(x,y,3);	
+			return true;
+		}else {return false;}}
+		if ((x>x2) & (y<y1)){
+			if ((x2x+y1y) < (Math.multiply(radius,radius))){do Screen.drawCircle(x,y,3);	
+			return true;
+		}else {return false;}}
+		if ((x>x2) & (y>y2)){
+			if ((x2x+y2y) < (Math.multiply(radius,radius))){do Screen.drawCircle(x,y,3);	
+			return true;	
+		}else {return false;}}
+		else {return false;}
+	}
+}
